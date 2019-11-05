@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Would You Rather?</title>
+    <script src="https://unpkg.com/vue@2.6.7/dist/vue.js"></script>
+   </head>
+
+<body>
+    <div id="app">
+
+        <h1>Would you rather...</h1>
+
+        <h2>{{ question }}</h2>
+       
+        <input type="radio" v-model="choice" v-bind:value="answer1" v-on:change="answerChanged"> 
+        <label>{{answer1}}</label>
+        <input type="radio" v-model="choice" v-bind:value="answer2" v-on:change="answerChanged">
+        <label>{{answer2}}</label>
+        
+        <div>
+            {{ userSelectionMessage }}
+        </div>
+    </div>
+
+    <script>
+
+
+    let app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                question: '...live in a house shaped like a circle or a house shaped like a triangle?',
+                answer1: 'Circle',
+                answer2: 'Triangle',
+                choice: '',
+                userSelectionMessage: ''
+            }
+        },
+        methods: {
+            answerChanged(answer) {
+                this.userSelectionMessage = `Thanks! You chose ${this.choice}`
+            }
+        }
+    })
+
+    </script>
+
+</body>
+
+</html>
